@@ -1,0 +1,14 @@
+{
+  "name": "jburns-personal-skills",
+  "owner": { "name": "jburns" },
+  "metadata": { "description": "Personal agent skills collection", "version": "1.0.0" },
+  "plugins": [
+    {
+      "name": "personal-skills",
+      "description": "jburns personal skill collection",
+      "source": "./",
+      "strict": false,
+      "skills": ["./skills/hello-world"]
+    }
+  ]
+}
