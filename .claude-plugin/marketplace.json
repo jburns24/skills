@@ -8,7 +8,7 @@
       "description": "jburns personal skill collection",
       "source": "./",
       "strict": false,
-      "skills": ["./skills/commit"]
+      "skills": ["./skills/commit", "./skills/find-commit"]
     }
   ]
 }
