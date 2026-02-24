@@ -2,22 +2,35 @@
 
 Personal agent skills collection for the [agentskills](https://agentskills.io) platform.
 
-## Adding new skills
+## Quick Start
 
-**Always use the `skill-creator` skill to create or modify skills in this repo. Never add a skill directory manually. Use 🤖 as the context marker when invoking skill-creation agents.**
+Install all skills:
 
+```bash
+npx skills add jburns24/skills --all
 ```
-/skill-creator
+
+Install a specific skill:
+
+```bash
+npx skills add jburns24/skills --skill <name>
 ```
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `commit` | Creates a conventional-commit message with embedded generation metadata (model, plan file, unplanned changes) |
+| `find-commit` | Searches git history for instrumented commits to trace features back to their plans and understand why changes were made |
 
 ## Structure
 
 ```
 skills/
-  hello-world/         # Example placeholder skill
+  commit/              # Commit skill
     SKILL.md
-spec/
-  agent-skills-spec.md # Link to platform specification
+  find-commit/         # Find-commit skill
+    SKILL.md
 template/
   SKILL.md             # Boilerplate for new skills
 .claude-plugin/
