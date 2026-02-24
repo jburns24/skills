@@ -58,18 +58,24 @@ Use an empty array if all changes match the plan or if the plan is unavailable.
 
 ### Step 7 — Build the HTML comment block
 
-Construct the metadata comment only if `plan_file` is not null:
+Construct the metadata block only if `plan_file` is not null. The block consists of two parts placed together with no blank line between them:
 
-```
-<!-- generation-metadata
-{
-  "model": "<model>",
-  "plan_file": "<absolute tilde-expanded path>",
-  "plan_contents": "<full plan text escaped as JSON string>",
-  "unplanned_changes": ["<desc>", ...]
-}
--->
-```
+1. A human-readable notice line so readers see that metadata is present even in UIs that hide HTML comments:
+   ```
+   Generated with Claude Code. This commit contains embedded generation metadata (model, plan, unplanned changes). To read it: git log --format="%B" <hash> | less  or use the find-commit skill: https://github.com/jburns24/skills/find-commit
+   ```
+
+2. Immediately followed (no blank line) by the HTML comment:
+   ```
+   <!-- generation-metadata
+   {
+     "model": "<model>",
+     "plan_file": "<absolute tilde-expanded path>",
+     "plan_contents": "<full plan text escaped as JSON string>",
+     "unplanned_changes": ["<desc>", ...]
+   }
+   -->
+   ```
 
 JSON-escape `plan_contents`: replace `"` → `\"`, newlines → `\n`. Use the full absolute path (no `~` shorthand) for `plan_file`.
 
@@ -91,6 +97,7 @@ The full commit message structure is:
 - <bullet 1>
 - <bullet 2>
 
+Generated with Claude Code. This commit contains embedded generation metadata (model, plan, unplanned changes). To read it: git log --format="%B" <hash> | less  or use the find-commit skill: https://github.com/jburns24/skills/find-commit
 <!-- generation-metadata
 { ... }
 -->
@@ -107,6 +114,7 @@ feat: your message here
 - bullet one
 - bullet two
 
+Generated with Claude Code. This commit contains embedded generation metadata (model, plan, unplanned changes). To read it: git log --format="%B" <hash> | less  or use the find-commit skill: https://github.com/jburns24/skills/find-commit
 <!-- generation-metadata
 {
   "model": "claude-sonnet-4-6",
@@ -121,7 +129,7 @@ EOF
 )"
 ```
 
-Omit the HTML comment block entirely when `plan_file` is `null`.
+Omit both the notice line and the HTML comment block entirely when `plan_file` is `null`.
 
 ### Step 10 — Verify and report
 
@@ -138,6 +146,7 @@ feat: migrate to custom domain temporal-bootcamp.liatr.io
 - Add static/CNAME for GitHub Pages custom domain routing
 - Update CLAUDE.md architecture section with new domain
 
+Generated with Claude Code. This commit contains embedded generation metadata (model, plan, unplanned changes). To read it: git log --format="%B" <hash> | less  or use the find-commit skill: https://github.com/jburns24/skills/find-commit
 <!-- generation-metadata
 {
   "model": "claude-sonnet-4-6",
