@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "skills": {
+    "commit": {
+      "source": "jburns24/skills",
+      "sourceType": "github",
+      "computedHash": "bfe285e5ee766bf2f0d08806871da2ee3a0bbec4c226d78110efca60b01fa7d4"
+    },
+    "find-commit": {
+      "source": "jburns24/skills",
+      "sourceType": "github",
+      "computedHash": "7658a16a834a7e206c4993d3eef1deea3320518963c5dad1ffd7f5f905c2f4e5"
+    }
+  }
+}

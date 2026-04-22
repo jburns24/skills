@@ -1,0 +1,30 @@
+name: CI (reusable)
+
+on:
+  workflow_call:
+    inputs:
+      skill_path:
+        type: string
+        required: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+
+      - name: Install skills-ref
+        run: uv tool install "git+https://github.com/agentskills/agentskills#subdirectory=skills-ref"
+
+      - name: Validate with skills-ref
+        run: skills-ref validate "${{ inputs.skill_path }}"
+
+      - name: Install skill-validator
+        run: brew install agent-ecosystem/tap/skill-validator
+
+      - name: Run skill-validator
+        run: |
+          skill-validator check --strict --emit-annotations "${{ inputs.skill_path }}"
+          skill-validator check --strict -o markdown "${{ inputs.skill_path }}" >> "$GITHUB_STEP_SUMMARY"

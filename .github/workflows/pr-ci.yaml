@@ -1,0 +1,35 @@
+name: PR CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    paths:
+      - skills/**
+
+jobs:
+  detect:
+    runs-on: ubuntu-latest
+    outputs:
+      all_changed_files: ${{ steps.changed.outputs.all_changed_files }}
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - id: changed
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46.0.5
+        with:
+          files: skills/**
+          dir_names: true
+          dir_names_max_depth: 2
+          matrix: true
+
+  validate:
+    needs: detect
+    if: needs.detect.outputs.all_changed_files != '[]'
+    strategy:
+      matrix:
+        skill: ${{ fromJson(needs.detect.outputs.all_changed_files) }}
+    uses: ./.github/workflows/ci.yaml
+    with:
+      skill_path: ${{ matrix.skill }}
