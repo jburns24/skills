@@ -1,0 +1,6 @@
+issuer: https://token.actions.githubusercontent.com
+subject: repo:jburns24/skills:ref:refs/heads/master
+claim_pattern:
+  workflow_ref: jburns24/skills/.github/workflows/release.yaml@.*
+permissions:
+  contents: write

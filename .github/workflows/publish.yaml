@@ -1,0 +1,28 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*-v*.*.*'
+
+jobs:
+  parse-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      skill_name: ${{ steps.parse.outputs.skill_name }}
+      version: ${{ steps.parse.outputs.version }}
+    steps:
+      - id: parse
+        run: |
+          TAG='${{ github.ref_name }}'
+          SKILL="${TAG%-v*}"
+          VERSION="${TAG##*-v}"
+          echo "skill_name=$SKILL" >> "$GITHUB_OUTPUT"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+  build-publish:
+    needs: parse-tag
+    uses: ./.github/workflows/build-publish.yaml
+    with:
+      skill_name: ${{ needs.parse-tag.outputs.skill_name }}
+      version: ${{ needs.parse-tag.outputs.version }}
