@@ -8,7 +8,7 @@ description: >
   or when agents should independently draft competing PRDs from
   source materials and have them judged. Spawns 4 worker agents
   that create competing PRDs, then 3 manager agents that judge,
-  debate, and synthesize into a final master PRD.md.
+  debate, and synthesize into a final master PRD.md document.
 ---
 
 # PRD Arena — Competitive Multi-Agent PRD Synthesis
