@@ -1,6 +1,6 @@
 ---
 name: commit
-description: Creates a conventional-commit message with embedded generation metadata (model, plan file, unplanned changes) in an HTML comment after implementing a plan. Use this skill whenever the user says "commit this", "git commit", "make a commit", or asks to commit changes after completing a plan.
+description: Creates a conventional-commit message with embedded generation metadata (model, plan file, unplanned changes) in an HTML comment after implementing a plan. Use this skill whenever the user says "commit this", "git commit", "make a commit", or asks to commit changes after completing a plan in plan mode.
 ---
 
 # Commit

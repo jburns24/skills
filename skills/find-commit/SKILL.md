@@ -1,6 +1,6 @@
 ---
 name: find-commit
-description: Searches git history for commits that contain generation-metadata blocks (created by the commit skill) and returns the plan intent, model, and unplanned changes for each match. Use this skill whenever an agent or user needs to understand why a change was made, trace a feature back to its plan, audit planned vs. actual changes, or find commits related to a topic. Triggers include "why was this changed", "find commits related to", "what plan drove this", "search commit history", "show me instrumented commits", "what was the intent behind", or any question about the reasoning or plan behind past changes.
+description: Searches git history for commits that contain generation-metadata blocks (created by the commit skill) and returns the plan intent, model, and unplanned changes for each match. Use this skill whenever an agent or user needs to understand why a change was made, trace a feature back to its plan, audit planned vs. actual changes, or find commits related to a topic. Triggers include "why was this changed", "find commits related to", "what plan drove this", "search commit history", "show me instrumented commits", "what was the intent behind", "trace plan history", or any question about the reasoning or plan behind past changes.
 ---
 
 # Find Commit
