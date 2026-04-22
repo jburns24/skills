@@ -22,7 +22,9 @@ jobs:
         run: skills-ref validate "${{ inputs.skill_path }}"
 
       - name: Install skill-validator
-        run: brew install agent-ecosystem/tap/skill-validator
+        run: |
+          go install github.com/agent-ecosystem/skill-validator/cmd/skill-validator@v1.5.5 # 26967f0b89b7a66a1cf40ff43c510714493975f7
+          echo "$HOME/go/bin" >> "$GITHUB_PATH"
 
       - name: Run skill-validator
         run: |
